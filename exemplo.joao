@@ -1,0 +1,23 @@
+ini
+real &a = 0
+real &b = 0
+real &c = 0
+
+escrever("Sua primeira nota: ")//comentario
+ler(&a)
+
+escrever("Sua segunda nota: ")
+ler(&b)
+
+&c = (&a + &b)/2
+escrever("Sua media: ")
+mostrar(&c)
+
+se(&c >= 7) {
+  escrever("Aprovado")  
+}
+senao {
+  escrever("Reprovado")
+}
+quebraLinha()
+fim

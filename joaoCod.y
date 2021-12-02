@@ -11,7 +11,6 @@ typedef struct ast { /*Estrutura de um nó*/
 	struct ast *r; /*Direita*/
 }Ast; 
 
-
 typedef struct numval { /*Estrutura de um número*/
 	int nodetype;
 	double number;
@@ -278,12 +277,13 @@ double eval(Ast *a) { /*Função que executa operações a partir de um nó*/
 					break; /*Lista de operções em um bloco IF/ELSE/WHILE. Assim o analisador não se perde entre os blocos*/
 		
 		case 'P': 	v = eval(a->l);		/*Recupera um valor*/
-					auxValor = v;
-					if (fmod(v, 1) == 0.0) {
-						printf ("%d\n",auxValor);
-					}else{printf ("%.2f\n",v);}										
-					break;
-					
+					int partInt = (int)v;
+          double rest = partInt - v;
+          if(rest==0.0) {
+            printf("%d\n", partInt);
+          } else {
+            printf("%.2f\n", v);
+          }					
 					  /*Função que imprime um valor*/
 		
 		case 'V': 	l1 = ins(l1,((Varval*)a)->var);
@@ -300,10 +300,10 @@ double eval(Ast *a) { /*Função que executa operações a partir de um nó*/
 					strcpy(aux1->valors,v1);
 					break;
 		case 'J': 	if(((Textoval*)a->l)->nodetype == 'm') {            							
-						if(((Textoval*)a->l)->v == "\n"){
-							printf("quebra 123");
-						}
-                     printf ("%s", ((Textoval*)a->l)->v);
+          if(((Textoval*)a->l)->v == "\n"){
+            printf("quebra 123");
+          }
+            printf ("%s", ((Textoval*)a->l)->v);
 					break;		/*Recupera um valor texto*/
                 }		
 			
@@ -372,9 +372,9 @@ stmt: IF '(' exp ')' '{' list '}' %prec IFX
 		{
 			$$ = newflow('W', $3, $6, NULL);
 		}
-	| ESCREVER '(' escrever ')' {$$ = $3;} // derivacao para escrever	
+	| ESCREVER '(' escrever ')' {$$ = $3;}
 		
-	| QUEBRARLINHA '('')' {$$ = newast('Q',NULL,NULL);} // derivacao para escrever	
+	| QUEBRARLINHA '('')' {$$ = newast('Q',NULL,NULL);}
 
 	| TIPO VAR  { $$ = newvari('V',$2);}
 	
@@ -440,8 +440,9 @@ exp1:
 
 int main(){
 	
-	//yyin=fopen("mediaEx.joao","r");	
-  yyin=fopen("1002uri.joao","r");	  
+  //yyin=fopen("exemplo.joao","r");
+	yyin=fopen("mediaPond.joao","r");	
+  //yyin=fopen("1002uri.joao","r");	    
 	yyparse();
 	yylex();
 	fclose(yyin);

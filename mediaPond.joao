@@ -7,8 +7,7 @@ enquanto(&i<&numAlunos) {
   //Inicializando minhas variaveis
   texto &nome = 0 
   real &nota1 = 0
-  real &nota2 = 0
-  real &nota3 = 0
+  real &nota2 = 0  
   real &media = 0
 
   escrever("Digite seu nome: ")
@@ -21,13 +20,17 @@ enquanto(&i<&numAlunos) {
   ler(&nota1)
 
   escrever("Digite a nota 2: ")
-  ler(&nota2)
+  ler(&nota2)  
 
-  escrever("Digite a nota 3: ")
-  ler(&nota3)
-
-  &media = (&nota1+&nota2+&nota3)/3
+  &media = (&nota1*2+&nota2*3)/5
   mostrar(&media)
+
+  se(&media >= 7) {
+    escrever("Aprovado")
+  }
+  senao {
+    escrever("Reprovado")
+  }
 
   quebraLinha()
   escrever("-------")
