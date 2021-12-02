@@ -1,0 +1,13 @@
+ini
+
+real &r = 3.14159 //RAIO
+real &raio = 0
+real &area = 0
+
+ler(&raio)
+
+&area = (&raio*&raio)*&r
+escrever("A=")
+mostrar(&area)
+
+fim

@@ -1,0 +1,39 @@
+ini
+
+inteiro &numAlunos = 2 //Quantidade de alunos
+inteiro &i = 0
+
+enquanto(&i<&numAlunos) {
+  //Inicializando minhas variaveis
+  texto &nome = 0 
+  real &nota1 = 0
+  real &nota2 = 0
+  real &nota3 = 0
+  real &media = 0
+
+  escrever("Digite seu nome: ")
+  lerString(&nome)
+
+  escrever("Vamos calcular sua media ")
+  mostrarString(&nome)
+
+  escrever("Digite a nota 1: ")
+  ler(&nota1)
+
+  escrever("Digite a nota 2: ")
+  ler(&nota2)
+
+  escrever("Digite a nota 3: ")
+  ler(&nota3)
+
+  &media = (&nota1+&nota2+&nota3)/3
+  mostrar(&media)
+
+  quebraLinha()
+  escrever("-------")
+  quebraLinha()
+
+  &i = &i+1
+}
+
+fim
